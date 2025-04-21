@@ -1,19 +1,17 @@
-
 import { useParams, useNavigate } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
-import SectionHeader from "@/components/ui/section-header";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ArrowLeft, Code, Laptop, Database, Globe, PenTool } from "lucide-react";
+import { ArrowLeft, Code, Laptop, Database, Globe, PenTool, Mail } from "lucide-react";
 import { Researcher } from "@/types/researcher";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
 
 const ResearcherProfile = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  // Map of tech icon names to their components
   const iconMap = {
     "code": Code,
     "laptop": Laptop,
@@ -22,7 +20,6 @@ const ResearcherProfile = () => {
     "pen-tool": PenTool,
   };
 
-  // Mock data - In a real application, this would come from an API or database
   const researchers: Record<string, Researcher> = {
     "ana-silva": {
       id: "ana-silva",
@@ -84,100 +81,118 @@ const ResearcherProfile = () => {
         Voltar para Pesquisadores
       </button>
 
-      <div className="animate-fade-in">
-        <div className="flex items-center gap-6 mb-8">
-          <Avatar className="h-32 w-32 border-4 border-primary/20">
-            <AvatarImage src={researcher.image} alt={researcher.name} />
-            <AvatarFallback className="text-2xl bg-primary text-white">{initials}</AvatarFallback>
-          </Avatar>
-          <div>
-            <SectionHeader 
-              title={researcher.name}
-              subtitle={researcher.role}
-            />
-          </div>
+      <div className="relative min-h-[500px] rounded-xl bg-gradient-to-br from-[#2A4834] to-[#1A2F20] p-8 text-white mb-8">
+        <div className="absolute top-4 right-4 flex gap-4">
+          <Button variant="secondary" className="rounded-full" size="icon">
+            <Mail className="h-4 w-4" />
+          </Button>
+          <Button variant="secondary" className="rounded-full" size="icon">
+            <Globe className="h-4 w-4" />
+          </Button>
         </div>
 
-        <Card className="mb-8 hover:shadow-lg transition-all duration-300">
-          <CardContent className="pt-6">
-            <div className="grid gap-4">
-              <div>
-                <h3 className="text-lg font-semibold mb-2">Área de Atuação</h3>
-                <p className="text-muted-foreground">{researcher.area}</p>
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold mb-2">Contato</h3>
-                <p className="text-muted-foreground">{researcher.email}</p>
-              </div>
+        <div className="grid md:grid-cols-2 gap-8 items-center">
+          <div className="space-y-6">
+            <div>
+              <h2 className="text-lg font-medium mb-2">Olá! 👋</h2>
+              <h1 className="text-5xl font-bold mb-4">
+                Eu sou {researcher.name.split(' ')[0]}
+                <span className="block text-[#A5B4FF]">{researcher.role}</span>
+              </h1>
             </div>
-          </CardContent>
-        </Card>
 
-        <Tabs defaultValue="about" className="w-full animate-fade-in">
-          <TabsList className="grid w-full grid-cols-3 mb-8">
-            <TabsTrigger value="about">Sobre</TabsTrigger>
-            <TabsTrigger value="technologies">Tecnologias</TabsTrigger>
-            <TabsTrigger value="publications">Publicações</TabsTrigger>
-          </TabsList>
+            <p className="text-lg text-gray-200 max-w-xl">
+              {researcher.bio}
+            </p>
 
-          <TabsContent value="about" className="animate-fade-in">
-            <Card>
-              <CardContent className="pt-6">
-                <p className="text-muted-foreground">{researcher.bio}</p>
-              </CardContent>
-            </Card>
-          </TabsContent>
+            <Button variant="secondary" className="rounded-full" size="lg">
+              Entrar em Contato
+            </Button>
+          </div>
 
-          <TabsContent value="technologies" className="animate-fade-in">
-            <Card>
-              <CardContent className="pt-6">
-                <div className="flex flex-wrap gap-6">
-                  {researcher.technologies.map((tech) => {
-                    const IconComponent = iconMap[tech.icon];
-                    return (
-                      <div 
-                        key={tech.name}
-                        className="flex flex-col items-center gap-2 p-4 rounded-lg bg-muted hover:bg-muted/80 transition-colors"
-                      >
-                        {IconComponent && <IconComponent className="h-8 w-8 text-primary" />}
-                        <span className="font-medium text-sm">{tech.name}</span>
-                        <Badge variant="secondary" className="mt-1">
-                          {tech.proficiency}
-                        </Badge>
-                      </div>
-                    );
-                  })}
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          <TabsContent value="publications" className="animate-fade-in">
-            <Card>
-              <CardContent className="pt-6">
-                <div className="space-y-4">
-                  {researcher.publications.map((pub, index) => (
-                    <div key={index} className="border-b last:border-0 pb-4 last:pb-0">
-                      <h4 className="font-medium hover:text-primary transition-colors">
-                        {pub.link ? (
-                          <a href={pub.link} target="_blank" rel="noopener noreferrer">
-                            {pub.title}
-                          </a>
-                        ) : (
-                          pub.title
-                        )}
-                      </h4>
-                      <p className="text-sm text-muted-foreground">
-                        {pub.journal} • {pub.year}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-        </Tabs>
+          <div className="relative">
+            <div className="absolute -top-4 -right-4 w-32 h-32 bg-[#FF6B2C] rounded-full opacity-20 blur-xl"></div>
+            <Avatar className="w-96 h-96 rounded-2xl border-4 border-white/10">
+              <AvatarImage src={researcher.image} alt={researcher.name} className="object-cover" />
+              <AvatarFallback className="text-4xl">{initials}</AvatarFallback>
+            </Avatar>
+          </div>
+        </div>
       </div>
+
+      <Tabs defaultValue="about" className="w-full">
+        <TabsList className="grid w-full grid-cols-3 mb-8">
+          <TabsTrigger value="about">Sobre</TabsTrigger>
+          <TabsTrigger value="technologies">Tecnologias</TabsTrigger>
+          <TabsTrigger value="publications">Publicações</TabsTrigger>
+        </TabsList>
+
+        <TabsContent value="about">
+          <Card>
+            <CardContent className="pt-6">
+              <div className="grid gap-4">
+                <div>
+                  <h3 className="text-lg font-semibold mb-2">Área de Atuação</h3>
+                  <p className="text-muted-foreground">{researcher.area}</p>
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold mb-2">Contato</h3>
+                  <p className="text-muted-foreground">{researcher.email}</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        <TabsContent value="technologies">
+          <Card>
+            <CardContent className="pt-6">
+              <div className="flex flex-wrap gap-6">
+                {researcher.technologies.map((tech) => {
+                  const IconComponent = iconMap[tech.icon];
+                  return (
+                    <div 
+                      key={tech.name}
+                      className="flex flex-col items-center gap-2 p-4 rounded-lg bg-muted hover:bg-muted/80 transition-colors"
+                    >
+                      {IconComponent && <IconComponent className="h-8 w-8 text-primary" />}
+                      <span className="font-medium text-sm">{tech.name}</span>
+                      <Badge variant="secondary" className="mt-1">
+                        {tech.proficiency}
+                      </Badge>
+                    </div>
+                  );
+                })}
+              </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        <TabsContent value="publications">
+          <Card>
+            <CardContent className="pt-6">
+              <div className="space-y-4">
+                {researcher.publications.map((pub, index) => (
+                  <div key={index} className="border-b last:border-0 pb-4 last:pb-0">
+                    <h4 className="font-medium hover:text-primary transition-colors">
+                      {pub.link ? (
+                        <a href={pub.link} target="_blank" rel="noopener noreferrer">
+                          {pub.title}
+                        </a>
+                      ) : (
+                        pub.title
+                      )}
+                    </h4>
+                    <p className="text-sm text-muted-foreground">
+                      {pub.journal} • {pub.year}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
+      </Tabs>
     </Layout>
   );
 };
