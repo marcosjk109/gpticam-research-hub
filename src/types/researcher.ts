@@ -8,6 +8,7 @@ export interface Publication {
 
 export interface Technology {
   name: string;
+  icon: "code" | "laptop" | "database" | "globe" | "pen-tool";
   proficiency: "Básico" | "Intermediário" | "Avançado";
 }
 
@@ -18,6 +19,7 @@ export interface Researcher {
   area: string;
   email: string;
   bio: string;
+  image?: string;
   technologies: Technology[];
   publications: Publication[];
 }

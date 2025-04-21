@@ -7,6 +7,8 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ArrowLeft } from "lucide-react";
 import { Researcher } from "@/types/researcher";
+import * as Icons from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const ResearcherProfile = () => {
   const { id } = useParams();
@@ -20,12 +22,13 @@ const ResearcherProfile = () => {
       role: "Coordenadora",
       area: "Inteligência Artificial, Aprendizado de Máquina",
       email: "ana.silva@gpticam.org",
+      image: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7",
       bio: "Pesquisadora com mais de 10 anos de experiência em Inteligência Artificial e Aprendizado de Máquina. Coordena projetos de pesquisa em aplicações de IA em problemas complexos.",
       technologies: [
-        { name: "Python", proficiency: "Avançado" },
-        { name: "TensorFlow", proficiency: "Avançado" },
-        { name: "PyTorch", proficiency: "Avançado" },
-        { name: "Scikit-learn", proficiency: "Avançado" },
+        { name: "Python", icon: "code", proficiency: "Avançado" },
+        { name: "TensorFlow", icon: "laptop", proficiency: "Avançado" },
+        { name: "PyTorch", icon: "database", proficiency: "Avançado" },
+        { name: "Scikit-learn", icon: "globe", proficiency: "Avançado" },
       ],
       publications: [
         {
@@ -42,7 +45,6 @@ const ResearcherProfile = () => {
         }
       ]
     },
-    // Add more researchers here...
   };
 
   const researcher = researchers[id as string];
@@ -57,6 +59,13 @@ const ResearcherProfile = () => {
     );
   }
 
+  const initials = researcher.name
+    .split(" ")
+    .map((n) => n[0])
+    .join("")
+    .toUpperCase()
+    .substring(0, 2);
+
   return (
     <Layout>
       <button 
@@ -68,10 +77,18 @@ const ResearcherProfile = () => {
       </button>
 
       <div className="animate-fade-in">
-        <SectionHeader 
-          title={researcher.name}
-          subtitle={researcher.role}
-        />
+        <div className="flex items-center gap-6 mb-8">
+          <Avatar className="h-32 w-32 border-4 border-primary/20">
+            <AvatarImage src={researcher.image} alt={researcher.name} />
+            <AvatarFallback className="text-2xl bg-primary text-white">{initials}</AvatarFallback>
+          </Avatar>
+          <div>
+            <SectionHeader 
+              title={researcher.name}
+              subtitle={researcher.role}
+            />
+          </div>
+        </div>
 
         <Card className="mb-8 hover:shadow-lg transition-all duration-300">
           <CardContent className="pt-6">
@@ -106,18 +123,22 @@ const ResearcherProfile = () => {
           <TabsContent value="technologies" className="animate-fade-in">
             <Card>
               <CardContent className="pt-6">
-                <div className="grid gap-4">
-                  {researcher.technologies.map((tech) => (
-                    <div key={tech.name} className="flex items-center justify-between">
-                      <span className="font-medium">{tech.name}</span>
-                      <Badge 
-                        variant="secondary"
-                        className="transition-all hover:scale-105"
+                <div className="flex flex-wrap gap-6">
+                  {researcher.technologies.map((tech) => {
+                    const IconComponent = Icons[tech.icon as keyof typeof Icons];
+                    return (
+                      <div 
+                        key={tech.name}
+                        className="flex flex-col items-center gap-2 p-4 rounded-lg bg-muted hover:bg-muted/80 transition-colors"
                       >
-                        {tech.proficiency}
-                      </Badge>
-                    </div>
-                  ))}
+                        <IconComponent className="h-8 w-8 text-primary" />
+                        <span className="font-medium text-sm">{tech.name}</span>
+                        <Badge variant="secondary" className="mt-1">
+                          {tech.proficiency}
+                        </Badge>
+                      </div>
+                    );
+                  })}
                 </div>
               </CardContent>
             </Card>
