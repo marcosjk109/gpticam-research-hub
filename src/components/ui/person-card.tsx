@@ -1,8 +1,9 @@
-
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { useNavigate } from "react-router-dom";
 
 interface PersonCardProps {
+  id?: string;
   name: string;
   role: string;
   image?: string;
@@ -10,8 +11,8 @@ interface PersonCardProps {
   email?: string;
 }
 
-const PersonCard = ({ name, role, image, area, email }: PersonCardProps) => {
-  // Get initials from name for avatar fallback
+const PersonCard = ({ id, name, role, image, area, email }: PersonCardProps) => {
+  const navigate = useNavigate();
   const initials = name
     .split(" ")
     .map((n) => n[0])
@@ -19,8 +20,14 @@ const PersonCard = ({ name, role, image, area, email }: PersonCardProps) => {
     .toUpperCase()
     .substring(0, 2);
 
+  // Create URL-friendly ID if not provided
+  const urlId = id || name.toLowerCase().replace(/\s+/g, "-");
+
   return (
-    <Card className="overflow-hidden hover:shadow-lg transition-shadow">
+    <Card 
+      className="overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer animate-scale"
+      onClick={() => navigate(`/pesquisadores/${urlId}`)}
+    >
       <CardHeader className="pb-2">
         <div className="flex items-center gap-4">
           <Avatar className="h-12 w-12">

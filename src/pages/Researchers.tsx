@@ -1,12 +1,11 @@
-
 import Layout from "@/components/layout/Layout";
 import SectionHeader from "@/components/ui/section-header";
 import PersonCard from "@/components/ui/person-card";
 
 const Researchers = () => {
-  // Sample researchers data
   const researchers = [
     {
+      id: "ana-silva",
       name: "Dr. Ana Silva",
       role: "Coordenadora",
       area: "Inteligência Artificial, Aprendizado de Máquina",
@@ -60,9 +59,10 @@ const Researchers = () => {
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {researchers.map((researcher, index) => (
+        {researchers.map((researcher) => (
           <PersonCard
-            key={index}
+            key={researcher.id}
+            id={researcher.id}
             name={researcher.name}
             role={researcher.role}
             area={researcher.area}

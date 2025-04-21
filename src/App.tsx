@@ -8,6 +8,7 @@ import Researchers from "./pages/Researchers";
 import Scholars from "./pages/Scholars";
 import Projects from "./pages/Projects";
 import NotFound from "./pages/NotFound";
+import ResearcherProfile from "./pages/ResearcherProfile";
 
 const queryClient = new QueryClient();
 
@@ -20,9 +21,9 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/pesquisadores" element={<Researchers />} />
+          <Route path="/pesquisadores/:id" element={<ResearcherProfile />} />
           <Route path="/bolsistas" element={<Scholars />} />
           <Route path="/projetos" element={<Projects />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
