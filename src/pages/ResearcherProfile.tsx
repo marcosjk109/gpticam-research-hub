@@ -5,14 +5,22 @@ import SectionHeader from "@/components/ui/section-header";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Code, Laptop, Database, Globe, PenTool } from "lucide-react";
 import { Researcher } from "@/types/researcher";
-import * as Icons from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const ResearcherProfile = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+
+  // Map of tech icon names to their components
+  const iconMap = {
+    "code": Code,
+    "laptop": Laptop,
+    "database": Database,
+    "globe": Globe,
+    "pen-tool": PenTool,
+  };
 
   // Mock data - In a real application, this would come from an API or database
   const researchers: Record<string, Researcher> = {
@@ -125,13 +133,13 @@ const ResearcherProfile = () => {
               <CardContent className="pt-6">
                 <div className="flex flex-wrap gap-6">
                   {researcher.technologies.map((tech) => {
-                    const IconComponent = Icons[tech.icon as keyof typeof Icons];
+                    const IconComponent = iconMap[tech.icon];
                     return (
                       <div 
                         key={tech.name}
                         className="flex flex-col items-center gap-2 p-4 rounded-lg bg-muted hover:bg-muted/80 transition-colors"
                       >
-                        <IconComponent className="h-8 w-8 text-primary" />
+                        {IconComponent && <IconComponent className="h-8 w-8 text-primary" />}
                         <span className="font-medium text-sm">{tech.name}</span>
                         <Badge variant="secondary" className="mt-1">
                           {tech.proficiency}
