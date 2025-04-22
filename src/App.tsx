@@ -9,6 +9,7 @@ import Scholars from "./pages/Scholars";
 import Projects from "./pages/Projects";
 import NotFound from "./pages/NotFound";
 import ResearcherProfile from "./pages/ResearcherProfile";
+import ScholarProfile from "./pages/ScholarProfile";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +24,7 @@ const App = () => (
           <Route path="/pesquisadores" element={<Researchers />} />
           <Route path="/pesquisadores/:id" element={<ResearcherProfile />} />
           <Route path="/bolsistas" element={<Scholars />} />
+          <Route path="/bolsistas/:id" element={<ScholarProfile />} />
           <Route path="/projetos" element={<Projects />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

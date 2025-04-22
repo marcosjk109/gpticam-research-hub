@@ -9,9 +9,10 @@ interface PersonCardProps {
   image?: string;
   area: string;
   email?: string;
+  type?: "researcher" | "scholar";
 }
 
-const PersonCard = ({ id, name, role, image, area, email }: PersonCardProps) => {
+const PersonCard = ({ id, name, role, image, area, email, type = "researcher" }: PersonCardProps) => {
   const navigate = useNavigate();
   const initials = name
     .split(" ")
@@ -22,11 +23,14 @@ const PersonCard = ({ id, name, role, image, area, email }: PersonCardProps) => 
 
   // Create URL-friendly ID if not provided
   const urlId = id || name.toLowerCase().replace(/\s+/g, "-");
+  
+  // Definir o caminho de navegação com base no tipo
+  const basePath = type === "scholar" ? "/bolsistas/" : "/pesquisadores/";
 
   return (
     <Card 
       className="overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer animate-scale"
-      onClick={() => navigate(`/pesquisadores/${urlId}`)}
+      onClick={() => navigate(`${basePath}${urlId}`)}
     >
       <CardHeader className="pb-2">
         <div className="flex items-center gap-4">

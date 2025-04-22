@@ -1,14 +1,43 @@
 import { useParams, useNavigate } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
-import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, Code, Laptop, Database, Globe, PenTool, Mail, LinkedinIcon, GithubIcon, BookOpen, PlayCircle, Award, Terminal, Monitor, MoveRight, MoveUpRight, Book, FileText, Users } from "lucide-react";
-import { Researcher } from "@/types/researcher";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { useEffect, useRef } from "react";
 
-const ResearcherProfile = () => {
+// Interface para os projetos do bolsista
+interface Project {
+  title: string;
+  description: string;
+  link?: string;
+}
+
+// Interface para as habilidades do bolsista
+interface Skill {
+  name: string;
+  icon: string;
+  proficiency: string;
+}
+
+// Interface para o Scholar (bolsista)
+interface Scholar {
+  id: string;
+  name: string;
+  role: string;
+  area: string;
+  email: string;
+  image?: string;
+  bio: string;
+  skills: Skill[];
+  projects: Project[];
+  institution?: string;
+  courseName?: string;
+  startYear?: string;
+  endYear?: string;
+  supervisor?: string;
+}
+
+const ScholarProfile = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -20,75 +49,88 @@ const ResearcherProfile = () => {
     "pen-tool": PenTool,
   };
 
-  const researchers: Record<string, Researcher> = {
-    "ana-silva": {
-      id: "ana-silva",
-      name: "Dr. Ana Silva",
-      role: "Coordenadora",
-      area: "Inteligência Artificial, Aprendizado de Máquina",
-      email: "ana.silva@gpticam.org",
-      image: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7",
-      bio: "Pesquisadora com mais de 10 anos de experiência em Inteligência Artificial e Aprendizado de Máquina. Coordena projetos de pesquisa em aplicações de IA em problemas complexos.",
-      technologies: [
-        { name: "Python", icon: "code", proficiency: "89%" },
-        { name: "TensorFlow", icon: "laptop", proficiency: "97%" },
-        { name: "PyTorch", icon: "database", proficiency: "85%" },
-        { name: "Scikit-learn", icon: "globe", proficiency: "98%" },
+  // Dados de exemplo para bolsistas
+  const scholars: Record<string, Scholar> = {
+    "maria-oliveira": {
+      id: "maria-oliveira",
+      name: "Maria Oliveira",
+      role: "Bolsista de Doutorado",
+      area: "Processamento de Linguagem Natural",
+      email: "maria.oliveira@gpticam.org",
+      bio: "Doutoranda em Ciência da Computação com foco em processamento de linguagem natural e análise de sentimentos. Tenho trabalhado em projetos que envolvem a aplicação de técnicas avançadas de NLP para análise de mídias sociais e textos científicos.",
+      institution: "Universidade Federal do Amazonas",
+      courseName: "Doutorado em Ciência da Computação",
+      startYear: "2021",
+      endYear: "2025",
+      supervisor: "Dr. Ana Silva",
+      skills: [
+        { name: "Python", icon: "code", proficiency: "95%" },
+        { name: "NLTK", icon: "laptop", proficiency: "90%" },
+        { name: "SpaCy", icon: "database", proficiency: "85%" },
+        { name: "Transformers", icon: "globe", proficiency: "80%" },
       ],
-      publications: [
+      projects: [
         {
-          title: "Deep Learning Applications in Computer Vision: A Comprehensive Review",
-          year: "2024",
-          journal: "Journal of Artificial Intelligence",
+          title: "Análise de Sentimentos em Comentários sobre Políticas Públicas",
+          description: "Desenvolvimento de um sistema para análise de sentimentos em comentários de redes sociais sobre políticas públicas na região amazônica.",
           link: "#"
         },
         {
-          title: "Machine Learning Approaches for Complex Problem Solving",
-          year: "2023",
-          journal: "AI Research Quarterly",
+          title: "Classificação Automática de Artigos Científicos",
+          description: "Criação de um modelo para classificação automática de artigos científicos em categorias temáticas utilizando técnicas de NLP.",
           link: "#"
-        },
-        {
-          title: "Neural Networks in Edge Computing: Challenges and Solutions",
-          year: "2022",
-          journal: "IEEE Transactions on Neural Networks",
-          link: "#"
-        },
-        {
-          title: "Advanced Image Recognition Using Convolutional Networks",
-          year: "2021",
-          journal: "Computer Vision Conference",
-          link: "#"
-        }
-      ],
-      statistics: {
-        publications: 42,
-        projectsLed: 15, 
-        yearsExperience: 10
-      },
-      awards: [
-        {
-          title: "Pesquisadora do Ano",
-          organization: "Prêmio Anual GPTICAM 2023",
-          url: "#"
         }
       ]
     },
+    "pedro-santos": {
+      id: "pedro-santos",
+      name: "Pedro Santos",
+      role: "Bolsista de Mestrado",
+      area: "Computação em Nuvem, Big Data",
+      email: "pedro.santos@gpticam.org",
+      bio: "Mestrando em Engenharia de Software com especialização em computação em nuvem e big data. Minha pesquisa está focada no desenvolvimento de soluções escaláveis para processamento de grandes volumes de dados na nuvem.",
+      institution: "Universidade do Estado do Amazonas",
+      courseName: "Mestrado em Engenharia de Software",
+      startYear: "2022",
+      endYear: "2024",
+      supervisor: "Dr. Carlos Mendes",
+      skills: [
+        { name: "AWS", icon: "cloud", proficiency: "92%" },
+        { name: "Apache Spark", icon: "database", proficiency: "88%" },
+        { name: "Hadoop", icon: "server", proficiency: "85%" },
+        { name: "Python", icon: "code", proficiency: "90%" },
+      ],
+      projects: [
+        {
+          title: "Plataforma de Processamento de Dados de IoT na Amazônia",
+          description: "Desenvolvimento de uma plataforma escalável para processamento de dados de sensores IoT em áreas remotas da Amazônia.",
+          link: "#"
+        },
+        {
+          title: "Análise de Grandes Volumes de Dados Meteorológicos",
+          description: "Criação de pipeline para processamento e análise de grandes volumes de dados meteorológicos para predição de eventos climáticos.",
+          link: "#"
+        }
+      ]
+    }
   };
 
-  const researcher = researchers[id as string];
+  // Converter dados dos bolsistas da página Scholars para este formato
+  // Primeiro, verificar se o ID passado está no nosso objeto de exemplo
+  const scholar = scholars[id as string];
 
-  if (!researcher) {
+  // Se não encontrar nos dados de exemplo, usar o ID para criar dados básicos
+  if (!scholar) {
     return (
       <Layout>
         <div className="text-center">
-          <p>Pesquisador não encontrado</p>
+          <p>Bolsista não encontrado</p>
         </div>
       </Layout>
     );
   }
 
-  const initials = researcher.name
+  const initials = scholar.name
     .split(" ")
     .map((n) => n[0])
     .join("")
@@ -98,11 +140,11 @@ const ResearcherProfile = () => {
   return (
     <Layout isDiego={true} className="bg-gradient-to-br from-[#2D3B22] to-[#1A2A12]">
       <button 
-        onClick={() => navigate("/pesquisadores")}
+        onClick={() => navigate("/bolsistas")}
         className="flex items-center gap-2 text-[#C9FF76] hover:text-[#C9FF76]/70 mb-6 font-medium transition-all duration-300 group"
       >
         <ArrowLeft className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-1" />
-        Voltar para Pesquisadores
+        Voltar para Bolsistas
       </button>
 
       <div className="relative rounded-xl p-8 text-white mb-16 overflow-hidden min-h-[540px]">
@@ -125,40 +167,40 @@ const ResearcherProfile = () => {
             <div className="space-y-2">
               <p className="text-lg opacity-80 font-light">Hello There! <span className="text-xl">👋</span></p>
               <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold">
-                Eu sou <span className="text-[#C9FF76]">{researcher.name.split(' ')[0]}</span>
+                Eu sou <span className="text-[#C9FF76]">{scholar.name.split(' ')[0]}</span>
               </h1>
               <h2 className="text-xl md:text-2xl lg:text-4xl font-light text-[#BACD8E] mt-2">
-                {researcher.role}
+                {scholar.role}
               </h2>
             </div>
 
             <div className="space-y-4">
               <p className="text-lg font-light leading-relaxed text-white/80">
-                {researcher.bio}
+                {scholar.bio}
               </p>
               
               <div className="flex flex-wrap gap-3 md:gap-4 mt-4">
                 <div className="flex items-center text-white/70">
                   <Mail className="h-4 w-4 mr-2 text-[#C9FF76]" />
-                  <span className="text-sm">{researcher.email}</span>
+                  <span className="text-sm">{scholar.email}</span>
                 </div>
                 <div className="flex items-center text-white/70">
                   <Globe className="h-4 w-4 mr-2 text-[#C9FF76]" />
-                  <span className="text-sm">{researcher.area}</span>
+                  <span className="text-sm">{scholar.area}</span>
                 </div>
               </div>
             </div>
 
-            <div>
-              <div className="relative rounded-full w-36 h-36 border border-white/30 flex items-center justify-center group cursor-pointer">
-                <div className="absolute inset-0 rounded-full border border-[#C9FF76]/30 animate-ping"></div>
-                <div className="text-center">
-                  <span className="text-sm font-light">Get</span>
-                  <span className="block text-base font-medium">In Touch</span>
-                  <span className="text-[#C9FF76] absolute bottom-10 right-6 text-xl group-hover:translate-x-1 transition-transform">↗</span>
-                </div>
-                <div className="absolute bottom-0 left-12 w-4 h-4 bg-[#C9FF76] rounded-full"></div>
-              </div>
+            <div className="flex flex-wrap gap-3">
+              <Badge variant="outline" className="border-[#C9FF76]/30 text-white px-3 py-1">
+                {scholar.institution}
+              </Badge>
+              <Badge variant="outline" className="border-[#C9FF76]/30 text-white px-3 py-1">
+                {scholar.courseName}
+              </Badge>
+              <Badge variant="outline" className="border-[#C9FF76]/30 text-white px-3 py-1">
+                {scholar.startYear} - {scholar.endYear || "Atual"}
+              </Badge>
             </div>
           </div>
 
@@ -166,98 +208,88 @@ const ResearcherProfile = () => {
             <div className="absolute inset-0 bg-gradient-to-r from-[#91C12D]/20 to-[#FF6932]/20 rounded-xl blur-xl opacity-70 group-hover:opacity-100 transition-opacity duration-700"></div>
             <div className="relative rounded-xl overflow-hidden aspect-square">
               <Avatar className="w-full h-full rounded-none">
-                <AvatarImage 
-                  src={researcher.image} 
-                  alt={researcher.name} 
-                  className="object-cover w-full h-full transition-transform duration-700 scale-105 group-hover:scale-110" 
-                />
-                <AvatarFallback className="text-4xl">{initials}</AvatarFallback>
+                {scholar.image ? (
+                  <AvatarImage 
+                    src={scholar.image} 
+                    alt={scholar.name} 
+                    className="object-cover w-full h-full transition-transform duration-700 scale-105 group-hover:scale-110" 
+                  />
+                ) : (
+                  <AvatarFallback className="text-4xl">{initials}</AvatarFallback>
+                )}
               </Avatar>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Seção Sobre - estilo About Me */}
+      {/* Seção Informações Acadêmicas */}
       <div className="relative py-20 mb-20">
-        {/* Texto gigante "About" no fundo */}
+        {/* Texto gigante "Acadêmico" no fundo */}
         <div className="absolute inset-0 text-white/5 font-bold text-[200px] flex items-center justify-center z-0 overflow-hidden select-none pointer-events-none">
-          <span className="transform -translate-y-10">Sobre</span>
+          <span className="transform -translate-y-10">Acadêmico</span>
         </div>
         
         <div className="relative z-10 mb-16">
-          <span className="text-[#C9FF76] text-lg">Sobre Mim</span>
+          <span className="text-[#C9FF76] text-lg">Formação</span>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-8">
             <div className="relative">
               <div className="w-64 h-64 rounded-full overflow-hidden border-4 border-[#C9FF76]/20 mx-auto">
                 <Avatar className="w-full h-full">
-                  <AvatarImage 
-                    src={researcher.image} 
-                    alt={researcher.name} 
-                    className="object-cover w-full h-full" 
-                  />
-                  <AvatarFallback className="text-6xl">{initials}</AvatarFallback>
+                  {scholar.image ? (
+                    <AvatarImage 
+                      src={scholar.image} 
+                      alt={scholar.name} 
+                      className="object-cover w-full h-full" 
+                    />
+                  ) : (
+                    <AvatarFallback className="text-6xl">{initials}</AvatarFallback>
+                  )}
                 </Avatar>
               </div>
-              
-              {/* Badge de premiação */}
-              {researcher.awards && researcher.awards.length > 0 && (
-                <div className="absolute top-0 right-8 bg-[#1A2A12]/90 border border-[#C9FF76]/30 rounded-lg p-3 text-white shadow-lg">
-                  <div className="flex items-center gap-2">
-                    <div className="bg-[#C9FF76]/20 rounded-full p-2">
-                      <Award className="h-5 w-5 text-[#C9FF76]" />
-                    </div>
-                    <div>
-                      <div className="text-sm font-bold">{researcher.awards[0].title}</div>
-                      <div className="text-xs text-[#BACD8E]">{researcher.awards[0].organization}</div>
-                    </div>
-                  </div>
-                </div>
-              )}
             </div>
             
             <div className="flex flex-col justify-center">
-              <h2 className="text-2xl font-light text-white mb-4">Hello! Eu sou <span className="font-bold">{researcher.name}</span></h2>
-              <p className="text-lg text-white/70 mb-3">
-                <span className="text-white font-medium">{researcher.role}</span> & Pesquisadora
-                <span className="text-[#C9FF76]"> com mais de {researcher.statistics?.yearsExperience} anos 
-                de experiência.</span> Especialista em desenvolvimento de soluções inovadoras utilizando 
-                inteligência artificial e aprendizado de máquina.
-              </p>
-              <p className="text-lg text-white/70">
-                Comecei minha jornada na área acadêmica e me especializei em <span className="text-white">aplicações 
-                práticas de IA</span> para resolver problemas complexos em diversos setores.
-              </p>
+              <h2 className="text-2xl font-light text-white mb-4">Informações sobre <span className="font-bold">minha formação</span></h2>
               
-              {/* Estatísticas - Contadores */}
-              <div className="grid grid-cols-3 gap-6 mt-10">
-                <div className="text-center">
-                  <span className="text-5xl font-bold text-[#C9FF76]">{researcher.statistics?.publications}+</span>
-                  <p className="text-sm text-white/70 mt-1">Publicações</p>
+              <div className="space-y-4 text-white/80">
+                <div>
+                  <h3 className="text-[#C9FF76] font-medium">Instituição</h3>
+                  <p>{scholar.institution}</p>
                 </div>
-                <div className="text-center">
-                  <span className="text-5xl font-bold text-[#C9FF76]">{researcher.statistics?.yearsExperience}+</span>
-                  <p className="text-sm text-white/70 mt-1">Anos de Experiência</p>
+                
+                <div>
+                  <h3 className="text-[#C9FF76] font-medium">Curso</h3>
+                  <p>{scholar.courseName}</p>
                 </div>
-                <div className="text-center">
-                  <span className="text-5xl font-bold text-[#C9FF76]">{researcher.statistics?.projectsLed}+</span>
-                  <p className="text-sm text-white/70 mt-1">Projetos Liderados</p>
+                
+                <div>
+                  <h3 className="text-[#C9FF76] font-medium">Período</h3>
+                  <p>{scholar.startYear} - {scholar.endYear || "Atual"}</p>
                 </div>
+                
+                {scholar.supervisor && (
+                  <div>
+                    <h3 className="text-[#C9FF76] font-medium">Orientador(a)</h3>
+                    <p>{scholar.supervisor}</p>
+                  </div>
+                )}
               </div>
             </div>
           </div>
         </div>
       </div>
 
+      {/* Seção Habilidades */}
       <div className="mb-12">
         <div className="text-center mb-14">
           <span className="text-[#91C12D] text-sm rotate-6 inline-block mb-2 relative">
             <span className="absolute -top-4 -right-4 w-8 h-8 bg-[#C9FF76]/10 rounded-full"></span>
-            Advantage
+            Vantagens
           </span>
-          <h2 className="text-5xl md:text-6xl font-bold text-white mb-3">Skills & tools</h2>
-          <p className="text-white/70 max-w-xl mx-auto">Para aqueles que querem conhecer as especialidades</p>
+          <h2 className="text-5xl md:text-6xl font-bold text-white mb-3">Skills & Ferramentas</h2>
+          <p className="text-white/70 max-w-xl mx-auto">Tecnologias e ferramentas que utilizo na minha pesquisa</p>
         </div>
         
         <div className="flex justify-center mb-12">
@@ -267,8 +299,8 @@ const ResearcherProfile = () => {
         </div>
         
         <div className="max-w-4xl mx-auto flex flex-wrap justify-center gap-10 mb-8">
-          {researcher.technologies.map((tech, index) => {
-            const IconComponent = iconMap[tech.icon];
+          {scholar.skills.map((skill, index) => {
+            const IconComponent = iconMap[skill.icon as keyof typeof iconMap];
             const iconColors = [
               { bg: "bg-red-600", text: "text-white", trailColor: "#432722", progressColor: "#C41E3A" },
               { bg: "bg-white", text: "text-[#1A2A12]", trailColor: "#22432B", progressColor: "#FFFFFF" },
@@ -276,10 +308,10 @@ const ResearcherProfile = () => {
               { bg: "bg-[#FF6932]", text: "text-white", trailColor: "#432722", progressColor: "#FF6932" },
             ];
             const color = iconColors[index % iconColors.length];
-            const percentage = parseInt(tech.proficiency);
+            const percentage = parseInt(skill.proficiency);
             
             return (
-              <div key={tech.name} className="flex flex-col items-center">
+              <div key={skill.name} className="flex flex-col items-center">
                 <div className="relative w-36 h-36 mb-4">
                   {/* Círculo base (trail) */}
                   <svg className="w-full h-full" viewBox="0 0 100 100">
@@ -325,7 +357,7 @@ const ResearcherProfile = () => {
                       fill="white" 
                       textAnchor="middle"
                     >
-                      {tech.proficiency}
+                      {skill.proficiency}
                     </text>
                   </svg>
                   
@@ -334,14 +366,14 @@ const ResearcherProfile = () => {
                     {IconComponent && <IconComponent className={`h-8 w-8 ${color.text}`} />}
                   </div>
                 </div>
-                <span className="text-white font-medium text-center">{tech.name}</span>
+                <span className="text-white font-medium text-center">{skill.name}</span>
               </div>
             );
           })}
         </div>
       </div>
 
-      {/* Seção de Publicações (estilo Awards & recognitions) */}
+      {/* Seção de Projetos */}
       <div className="relative py-24 overflow-hidden">
         {/* Elementos decorativos de fundo */}
         <div className="absolute inset-y-0 left-1/2 w-[600px] h-[600px] border border-[#C9FF76]/5 rounded-full opacity-20"></div>
@@ -350,34 +382,36 @@ const ResearcherProfile = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start relative z-10">
           <div>
-            <span className="text-[#91C12D] text-sm rotate-6 inline-block mb-2">Publicações</span>
+            <span className="text-[#91C12D] text-sm rotate-6 inline-block mb-2">Projetos</span>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4">
-              Artigos &<br />
-              contribuições
+              Pesquisa &<br />
+              Desenvolvimento
             </h2>
           </div>
           
           <div className="space-y-6">
-            {researcher.publications.map((pub, index) => (
+            {scholar.projects.map((project, index) => (
               <div key={index} className="border-b border-[#C9FF76]/10 pb-6 last:border-b-0 group">
                 <div className="flex justify-between items-start">
                   <div>
                     <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-[#C9FF76] transition-colors duration-300">
-                      {pub.title}
+                      {project.title}
                     </h3>
-                    <p className="text-sm text-[#BACD8E] uppercase tracking-wide mt-1">
-                      {pub.journal} {pub.year}
+                    <p className="text-[#BACD8E] mt-2">
+                      {project.description}
                     </p>
                   </div>
                   
-                  <a 
-                    href={pub.link} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="w-11 h-11 rounded-full border border-[#C9FF76]/30 flex items-center justify-center shrink-0 hover:bg-[#C9FF76]/10 transition-colors duration-300"
-                  >
-                    <MoveUpRight className="h-4 w-4 text-[#C9FF76]" />
-                  </a>
+                  {project.link && (
+                    <a 
+                      href={project.link} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="w-11 h-11 rounded-full border border-[#C9FF76]/30 flex items-center justify-center shrink-0 hover:bg-[#C9FF76]/10 transition-colors duration-300"
+                    >
+                      <MoveUpRight className="h-4 w-4 text-[#C9FF76]" />
+                    </a>
+                  )}
                 </div>
               </div>
             ))}
@@ -388,4 +422,4 @@ const ResearcherProfile = () => {
   );
 };
 
-export default ResearcherProfile;
+export default ScholarProfile; 
