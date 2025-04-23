@@ -42,138 +42,102 @@ const Scholars = () => {
   const scholars: Scholar[] = [
     {
       id: "scholar1",
-      name: "Maria Santos",
-      role: "Pesquisadora Principal",
-      area: "Inteligência Artificial e Processamento de Linguagem Natural",
-      bio: "Doutora em Ciência da Computação com foco em Inteligência Artificial. Atua no desenvolvimento de modelos de linguagem avançados e aplicações de NLP para análise de dados não estruturados.",
-      email: "maria.santos@gpticam.org",
-      initials: "MS",
-      skills: ["Deep Learning", "NLP", "Python", "TensorFlow", "PyTorch"],
-      education: "Doutorado em Ciência da Computação",
-      publications: [
-        "Santos, M. et al. (2022). 'Avanços em Modelos Transformers para Processamento de Linguagem Natural em Português'. Revista Brasileira de IA.",
-        "Santos, M. & Oliveira, J. (2023). 'Aplicações de Aprendizado por Reforço em Ambientes Dinâmicos'. Conferência Internacional de Machine Learning."
-      ]
+      name: "Abymael",
+      role: "Bolsista",
+      area: "Inteligência Artificial",
+      bio: "Bolsista de iniciação científica, atua em projetos de pesquisa com foco em inteligência artificial aplicada.",
+      email: "abymael@gpticam.org",
+      initials: "AB",
+      skills: ["Python", "Machine Learning", "Deep Learning"],
+      education: "Graduação em andamento"
     },
     {
       id: "scholar2",
-      name: "João Oliveira",
-      role: "Analista de Dados",
-      area: "Ciência de Dados e Aprendizado de Máquina",
-      bio: "Mestre em Ciência de Dados com experiência em projetos de análise preditiva e visualização de dados complexos. Especialista em técnicas de machine learning para análise de dados temporais.",
-      email: "joao.oliveira@gpticam.org",
-      initials: "JO",
-      skills: ["Machine Learning", "Data Visualization", "R", "Python", "SQL"],
-      education: "Mestrado em Ciência de Dados",
-      publications: [
-        "Oliveira, J. (2022). 'Técnicas Avançadas para Análise de Séries Temporais em Dados de Saúde'. Simpósio Brasileiro de Computação.",
-        "Santos, M. & Oliveira, J. (2023). 'Aplicações de Aprendizado por Reforço em Ambientes Dinâmicos'. Conferência Internacional de Machine Learning."
-      ]
+      name: "Marcos",
+      role: "Bolsista",
+      area: "Processamento de Linguagem Natural",
+      bio: "Desenvolve pesquisas na área de processamento de linguagem natural e análise de texto.",
+      email: "marcos@gpticam.org",
+      initials: "MA",
+      skills: ["NLP", "Python", "Análise de Dados"],
+      education: "Graduação em andamento"
     },
     {
       id: "scholar3",
-      name: "Ana Ferreira",
-      role: "Coordenadora",
-      area: "Gestão de Projetos de Pesquisa e Inovação",
-      bio: "Doutora em Administração com especialização em Gestão de Inovação. Coordena projetos interdisciplinares e atua na interface entre pesquisa acadêmica e aplicações industriais.",
-      email: "ana.ferreira@gpticam.org",
-      initials: "AF",
-      skills: ["Gestão de Projetos", "Inovação", "Metodologias Ágeis", "PMI"],
-      education: "Doutorado em Administração",
-      publications: [
-        "Ferreira, A. (2021). 'Modelos de Gestão para Projetos de Pesquisa em IA'. Revista de Administração e Inovação.",
-        "Ferreira, A. et al. (2023). 'Desafios na Implementação de Projetos de IA no Setor Público'. Congresso de Administração Pública."
-      ]
+      name: "Thomas",
+      role: "Bolsista",
+      area: "Ciência de Dados",
+      bio: "Trabalha com análise e visualização de dados em projetos de pesquisa aplicada.",
+      email: "thomas@gpticam.org",
+      initials: "TH",
+      skills: ["Visualização de Dados", "Python", "R", "Estatística"],
+      education: "Graduação em andamento"
     },
     {
       id: "scholar4",
-      name: "Carlos Mendes",
-      role: "Especialista em Machine Learning",
-      area: "Aprendizado Profundo e Redes Neurais",
-      bio: "Doutor em Engenharia Elétrica com foco em algoritmos de aprendizado profundo. Desenvolve modelos para visão computacional e reconhecimento de padrões em dados complexos.",
-      email: "carlos.mendes@gpticam.org",
-      initials: "CM",
-      skills: ["Deep Learning", "Computer Vision", "Python", "CUDA", "TensorFlow"],
-      education: "Doutorado em Engenharia Elétrica",
-      publications: [
-        "Mendes, C. & Lima, P. (2022). 'Arquiteturas de Redes Neurais para Detecção de Anomalias em Imagens Médicas'. Revista de Inteligência Artificial Aplicada.",
-        "Mendes, C. et al. (2023). 'Transfer Learning em Modelos de Visão Computacional para Recursos Limitados'. Simpósio de Computação Aplicada."
-      ]
+      name: "Laura",
+      role: "Bolsista",
+      area: "Visão Computacional",
+      bio: "Atua em projetos de pesquisa envolvendo visão computacional e processamento de imagens.",
+      email: "laura@gpticam.org",
+      initials: "LA",
+      skills: ["Computer Vision", "Python", "OpenCV", "TensorFlow"],
+      education: "Graduação em andamento"
     },
     {
       id: "scholar5",
-      name: "Patrícia Lima",
-      role: "Engenheira de Dados",
-      area: "Engenharia de Dados e Big Data",
-      bio: "Mestre em Sistemas de Informação com especialização em processamento de dados em grande escala. Desenvolve pipelines de dados e infraestrutura para projetos de IA.",
-      email: "patricia.lima@gpticam.org",
-      initials: "PL",
-      skills: ["Apache Spark", "Hadoop", "ETL", "SQL", "NoSQL", "Python"],
-      education: "Mestrado em Sistemas de Informação",
-      publications: [
-        "Lima, P. (2022). 'Arquiteturas Escaláveis para Processamento de Dados em Tempo Real'. Conferência Brasileira de Dados.",
-        "Mendes, C. & Lima, P. (2022). 'Arquiteturas de Redes Neurais para Detecção de Anomalias em Imagens Médicas'. Revista de Inteligência Artificial Aplicada."
-      ]
+      name: "João",
+      role: "Bolsista",
+      area: "Inteligência Artificial",
+      bio: "Desenvolve pesquisas em aprendizado de máquina e sistemas inteligentes.",
+      email: "joao@gpticam.org",
+      initials: "JO",
+      skills: ["Machine Learning", "Python", "TensorFlow", "Keras"],
+      education: "Graduação em andamento"
     },
     {
       id: "scholar6",
-      name: "Ricardo Sousa",
-      role: "Pesquisador em IA Médica",
-      area: "Inteligência Artificial Aplicada à Saúde",
-      bio: "Doutor em Ciências Biomédicas com foco na aplicação de técnicas de IA para diagnóstico e análise de imagens médicas. Trabalha na interface entre medicina e computação.",
-      email: "ricardo.sousa@gpticam.org",
-      initials: "RS",
-      skills: ["Medical AI", "Image Processing", "Python", "Deep Learning", "Healthcare Analytics"],
-      education: "Doutorado em Ciências Biomédicas",
-      publications: [
-        "Sousa, R. et al. (2022). 'Modelos de IA para Detecção Precoce de Condições Neurológicas'. Journal of Medical Informatics.",
-        "Sousa, R. & Silva, M. (2023). 'Interpretabilidade em Modelos de IA para Decisões Diagnósticas'. Revista Brasileira de Informática Médica."
-      ]
+      name: "Laíny",
+      role: "Bolsista",
+      area: "Aprendizado de Máquina",
+      bio: "Participa de projetos de pesquisa focados em algoritmos de aprendizado de máquina.",
+      email: "lainy@gpticam.org",
+      initials: "LA",
+      skills: ["Machine Learning", "Python", "Scikit-learn", "Data Analysis"],
+      education: "Graduação em andamento"
     },
     {
       id: "scholar7",
-      name: "Lúcia Campos",
-      role: "Especialista Ambiental",
-      area: "Inteligência Artificial para Sustentabilidade",
-      bio: "Doutora em Ciências Ambientais com pesquisa em aplicações de IA para monitoramento ambiental e sustentabilidade. Desenvolve sistemas de previsão para eventos climáticos extremos.",
-      email: "lucia.campos@gpticam.org",
-      initials: "LC",
-      skills: ["Environmental Modeling", "Remote Sensing", "GIS", "Machine Learning", "Python"],
-      education: "Doutorado em Ciências Ambientais",
-      publications: [
-        "Campos, L. (2022). 'Aplicação de Técnicas de Deep Learning para Previsão de Padrões Climáticos'. Revista de Meteorologia Aplicada.",
-        "Campos, L. & Costa, F. (2023). 'Sistemas Inteligentes para Monitoramento da Qualidade do Ar'. Simpósio de Tecnologias Ambientais."
-      ]
+      name: "Emellin",
+      role: "Bolsista",
+      area: "Desenvolvimento Web",
+      bio: "Atua no desenvolvimento de aplicações web para projetos de pesquisa do grupo.",
+      email: "emellin@gpticam.org",
+      initials: "EM",
+      skills: ["Web Development", "JavaScript", "React", "Node.js"],
+      education: "Graduação em andamento"
     },
     {
       id: "scholar8",
-      name: "Fernando Costa",
-      role: "Engenheiro IoT",
-      area: "Internet das Coisas e Sistemas Embarcados",
-      bio: "Mestre em Engenharia de Computação especializado em sistemas embarcados e IoT. Desenvolve soluções para coleta e processamento de dados em dispositivos com recursos limitados.",
-      email: "fernando.costa@gpticam.org",
-      initials: "FC",
-      skills: ["IoT", "Embedded Systems", "C/C++", "MQTT", "Edge Computing", "Arduino"],
-      education: "Mestrado em Engenharia de Computação",
-      publications: [
-        "Costa, F. (2022). 'Protocolos de Comunicação Eficientes para Redes de Sensores'. Revista de Engenharia de Computação.",
-        "Campos, L. & Costa, F. (2023). 'Sistemas Inteligentes para Monitoramento da Qualidade do Ar'. Simpósio de Tecnologias Ambientais."
-      ]
+      name: "Felix",
+      role: "Bolsista",
+      area: "Redes Neurais",
+      bio: "Pesquisa aplicações de redes neurais em problemas de classificação e reconhecimento de padrões.",
+      email: "felix@gpticam.org",
+      initials: "FE",
+      skills: ["Neural Networks", "Python", "Deep Learning", "TensorFlow"],
+      education: "Graduação em andamento"
     },
     {
       id: "scholar9",
-      name: "Mariana Silva",
-      role: "Analista de Dados",
-      area: "Estatística e Análise Preditiva",
-      bio: "Mestre em Estatística Aplicada com experiência em modelagem estatística e análise preditiva. Especialista em métodos quantitativos para tomada de decisão baseada em dados.",
-      email: "mariana.silva@gpticam.org",
-      initials: "MS",
-      skills: ["Statistical Modeling", "Predictive Analytics", "R", "Python", "SAS", "Bayesian Methods"],
-      education: "Mestrado em Estatística Aplicada",
-      publications: [
-        "Silva, M. (2022). 'Métodos Bayesianos para Análise de Dados Esparsos'. Revista Brasileira de Estatística.",
-        "Sousa, R. & Silva, M. (2023). 'Interpretabilidade em Modelos de IA para Decisões Diagnósticas'. Revista Brasileira de Informática Médica."
-      ]
+      name: "Victoria",
+      role: "Bolsista",
+      area: "Sistemas Embarcados",
+      bio: "Desenvolve pesquisas em sistemas embarcados e internet das coisas.",
+      email: "victoria@gpticam.org",
+      initials: "VI",
+      skills: ["IoT", "Embedded Systems", "Arduino", "Raspberry Pi"],
+      education: "Graduação em andamento"
     }
   ];
 

@@ -29,69 +29,77 @@ const Projects = () => {
   // Sample scholars data
   const allScholars = [
     {
-      id: "maria-oliveira",
-      name: "Maria Oliveira",
-      role: "Bolsista de Doutorado",
-      area: "Processamento de Linguagem Natural",
-      email: "maria.oliveira@gpticam.org",
-      initials: "MO"
-    },
-    {
-      id: "pedro-santos",
-      name: "Pedro Santos",
-      role: "Bolsista de Mestrado",
-      area: "Computação em Nuvem, Big Data",
-      email: "pedro.santos@gpticam.org",
-      initials: "PS"
-    },
-    {
-      id: "julia-costa",
-      name: "Julia Costa",
-      role: "Bolsista de Iniciação Científica",
-      area: "Visão Computacional",
-      email: "julia.costa@gpticam.org",
-      initials: "JC"
-    },
-    {
-      id: "lucas-ferreira",
-      name: "Lucas Ferreira",
-      role: "Bolsista de Mestrado",
+      id: "abymael",
+      name: "Abymael",
+      role: "Bolsista",
       area: "Inteligência Artificial",
-      email: "lucas.ferreira@gpticam.org",
-      initials: "LF"
+      email: "abymael@gpticam.org",
+      initials: "AB"
     },
     {
-      id: "camila-rodrigues",
-      name: "Camila Rodrigues",
-      role: "Bolsista de Doutorado",
-      area: "Segurança de Dados",
-      email: "camila.rodrigues@gpticam.org",
-      initials: "CR"
-    },
-    {
-      id: "bruno-lima",
-      name: "Bruno Lima",
-      role: "Bolsista de Iniciação Científica",
-      area: "Desenvolvimento Web",
-      email: "bruno.lima@gpticam.org",
-      initials: "BL"
-    },
-    {
-      id: "mariana-alves",
-      name: "Mariana Alves",
-      role: "Bolsista de Mestrado",
-      area: "Machine Learning",
-      email: "mariana.alves@gpticam.org",
+      id: "marcos",
+      name: "Marcos",
+      role: "Bolsista",
+      area: "Processamento de Linguagem Natural",
+      email: "marcos@gpticam.org",
       initials: "MA"
     },
     {
-      id: "felipe-souza",
-      name: "Felipe Souza",
-      role: "Bolsista de Iniciação Científica",
-      area: "Banco de Dados",
-      email: "felipe.souza@gpticam.org",
-      initials: "FS"
+      id: "thomas",
+      name: "Thomas",
+      role: "Bolsista",
+      area: "Ciência de Dados",
+      email: "thomas@gpticam.org",
+      initials: "TH"
     },
+    {
+      id: "laura",
+      name: "Laura",
+      role: "Bolsista",
+      area: "Visão Computacional",
+      email: "laura@gpticam.org",
+      initials: "LA"
+    },
+    {
+      id: "joao",
+      name: "João",
+      role: "Bolsista",
+      area: "Inteligência Artificial",
+      email: "joao@gpticam.org",
+      initials: "JO"
+    },
+    {
+      id: "lainy",
+      name: "Laíny",
+      role: "Bolsista",
+      area: "Aprendizado de Máquina",
+      email: "lainy@gpticam.org",
+      initials: "LA"
+    },
+    {
+      id: "emellin",
+      name: "Emellin",
+      role: "Bolsista",
+      area: "Desenvolvimento Web",
+      email: "emellin@gpticam.org",
+      initials: "EM"
+    },
+    {
+      id: "felix",
+      name: "Felix",
+      role: "Bolsista",
+      area: "Redes Neurais",
+      email: "felix@gpticam.org",
+      initials: "FE"
+    },
+    {
+      id: "victoria",
+      name: "Victoria",
+      role: "Bolsista",
+      area: "Sistemas Embarcados",
+      email: "victoria@gpticam.org",
+      initials: "VI"
+    }
   ];
 
   // Sample projects data

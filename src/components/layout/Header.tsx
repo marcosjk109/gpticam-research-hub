@@ -55,7 +55,11 @@ export default function Header() {
       <div className="container max-w-4xl mx-auto px-4">
         <div className="bg-primary rounded-full shadow-lg flex items-center h-16 px-6 backdrop-blur-sm bg-opacity-90 border border-primary/20">
           <Link to="/" className="flex items-center space-x-2">
-            <span className="text-2xl font-bold text-white">GPTICAM</span>
+            <img 
+              src="/img/logo gpticam.png" 
+              alt="GPTICAM Logo" 
+              className="h-10 w-auto"
+            />
           </Link>
 
           {/* Desktop Navigation */}
@@ -106,7 +110,14 @@ export default function Header() {
               </SheetTrigger>
               <SheetContent side="right">
                 <SheetHeader>
-                  <SheetTitle className="text-left">GPTICAM</SheetTitle>
+                  <SheetTitle className="text-left flex items-center">
+                    <img 
+                      src="/img/logo gpticam.png" 
+                      alt="GPTICAM Logo" 
+                      className="h-8 w-auto mr-2" 
+                    />
+                    GPTICAM
+                  </SheetTitle>
                 </SheetHeader>
                 <div className="flex flex-col space-y-4 py-4">
                   {/* Opções de navegação */}

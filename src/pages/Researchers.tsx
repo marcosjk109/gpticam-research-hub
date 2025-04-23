@@ -33,35 +33,35 @@ const Researchers = () => {
   // Dados dos pesquisadores
   const researchers: Researcher[] = [
     {
-      id: "carlos-silva",
-      name: "Dr. Carlos Silva",
+      id: "klenilmar-dias",
+      name: "Klenilmar Dias",
       title: "Coordenador do Laboratório",
       area: "Inteligência Artificial e Linguagem Natural",
-      description: "Pesquisador com mais de 15 anos de experiência em processamento de linguagem natural e modelos de grande escala. Lidera projetos de colaboração com empresas e universidades internacionais.",
+      description: "Klenilmar Lopes é Doutor em Engenharia Elétrica com ênfase em Inteligência Computacional pela UFMG e Mestre em Computação Aplicada pela UFPA. Possui graduação em Computação (UNAMA) e Licenciatura em Informática (UNIFAP), além de especializações em Redes de Computadores (UFPA) e Gestão da Educação Profissional e Tecnológica (IFRN). Atuou como Diretor Geral e Reitor Substituto do IFAP, além de cargos de gestão em outras instituições como UFPA e Estácio Seama. É professor do IFAP – Campus Macapá e do Mestrado Profissional em Educação Profissional e Tecnológica (ProfEPT). Sua atuação envolve temas como Ciência de Dados, Aprendizado de Máquina, PLN, Big Data, Computação em Nuvem, Redes e Inteligência Computacional, com foco em metodologias educacionais inovadoras e tecnologias assistivas.",
       image: "/images/researchers/carlos.jpg"
     },
     {
-      id: "ana-costa",
-      name: "Dra. Ana Costa",
-      title: "Professora Associada",
+      id: "klessis-dias",
+      name: "Klessis Dias",
+      title: "Pesquisador Sênior",
       area: "Visão Computacional e IA Generativa",
-      description: "Especialista em modelos generativos e técnicas avançadas de visão computacional. Autora de mais de 40 artigos em revistas e conferências internacionais.",
+      description: "Klessis Lopes Dias é Mestre em Informática pela PUC-Rio e graduado em Ciência da Computação pela UFPA. Realizou estágio no Niagara College, no Canadá. Atuou como Pró-Reitor de Pesquisa, Pós-Graduação e Inovação do IFAP (2011–2014), liderando a implantação de programas como PIBIC, PIBID e cursos de especialização. Foi coordenador da Região Norte no Fórum de Pró-Reitores de Pesquisa dos IFs e contribuiu para a criação de 16 grupos de pesquisa no IFAP. É Vice-Líder do GPTICAM (grupo de pesquisa credenciado ao CNPq) e professor efetivo do IFAP desde 2010. Tem experiência em Engenharia de Software, Banco de Dados, Algoritmos, TICs na Educação e Sistemas de Informação.",
       image: "/images/researchers/ana.jpg"
     },
     {
-      id: "paulo-martins",
-      name: "Dr. Paulo Martins",
-      title: "Professor Assistente",
+      id: "eonay-barbosa",
+      name: "Eonay Barbosa",
+      title: "Pesquisador Sênior",
       area: "Aprendizado de Máquina e Segurança de Dados",
-      description: "Desenvolve pesquisas na interseção entre aprendizado de máquina e segurança cibernética, com foco em robustez de modelos contra ataques adversariais.",
+      description: "Eonay Barbosa Gurjão é graduado em Sistemas de Informação (2011) e possui diversas especializações nas áreas de tecnologia, educação e docência. Atua como Técnico em Tecnologia da Informação no IFAP desde 2011 e tem experiência como professor em instituições de ensino superior. Desenvolve pesquisas em inteligência computacional, ambientes virtuais de aprendizagem e chatbots. É autor de artigos e capítulos de livros sobre software livre na educação, participação feminina na tecnologia e práticas curriculares. Também participa de bancas, eventos acadêmicos e orientações de TCC. Sua atuação abrange Ciência da Computação, Educação Tecnológica e Engenharia de Software.",
       image: "/images/researchers/paulo.jpg"
     },
     {
-      id: "mariana-santos",
-      name: "Dra. Mariana Santos",
-      title: "Pesquisadora Sênior",
+      id: "celio-rodrigues",
+      name: "Celio Rodrigues",
+      title: "Pesquisador Sênior",
       area: "Ética em IA e Impactos Sociais",
-      description: "Trabalha com questões éticas relacionadas à implementação de sistemas de inteligência artificial, com foco em viés algorítmico e transparência.",
+      description: "Possui graduação em Ciência da Computação pela Universidade de Franca, Mestrado em Ciências em Educação Agrícola, Especialização em Didática do Ensino Superior e Complementação Pedagógica em Informática. Tem experiência na área de informática, com ênfase em Ciência da Computação e 14 anos em sala de aula.",
       image: "/images/researchers/mariana.jpg"
     },
   ];
@@ -121,7 +121,7 @@ const Researchers = () => {
             </motion.span>
           </motion.h1>
           <motion.p 
-            className="text-center text-[#7DCB80] max-w-3xl mx-auto text-lg"
+            className="text-center text-[#7DCB80] max-w-3xl mx-auto text-lg text-justify"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.4 }}
@@ -208,16 +208,16 @@ const Researchers = () => {
                 >
                   {researcher.title}
                 </motion.div>
-                
+                    
                 <motion.div 
                   className="h-0.5 w-20 bg-[#FDD744]/30 my-4"
                   initial={{ width: 0 }}
                   animate={{ width: 80 }}
                   transition={{ duration: 0.8, delay: 0.6 }}
                 ></motion.div>
-                
+                  
                 <motion.div 
-                  className="text-[#7DCB80]/70 mb-2"
+                  className="text-[#7DCB80]/70 mb-2 text-justify"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5, delay: 0.7 }}
@@ -226,7 +226,7 @@ const Researchers = () => {
                 </motion.div>
                 
                 <motion.p 
-                  className="text-white/80 mb-6"
+                  className="text-white/80 mb-6 text-justify"
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.8 }}
@@ -247,7 +247,7 @@ const Researchers = () => {
                   </Button>
                 </motion.div>
               </motion.div>
-              
+
               {/* Elemento decorativo */}
               <motion.div 
                 className={`absolute ${index % 2 === 0 ? '-right-20' : '-left-20'} -bottom-20 w-40 h-40 rounded-full bg-[#FDD744]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
