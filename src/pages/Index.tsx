@@ -244,14 +244,15 @@ const Index = () => {
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#FDD744] to-[#FFEB80]">
               <DecryptedText 
-                text="GPTICAM Research Hub" 
-                delay={100}
-                iterations={3}
+                text="nós amamos a tecnologia" 
+                delay={800}
+                iterations={5}
+                animateOn="load"
               />
             </h1>
             
             <p className="text-[#7DCB80] text-lg md:text-xl text-center md:text-left max-w-lg">
-              Grupo de Pesquisa em Tecnologia da Informação e Comunicação Aplicada à Multimídia
+              Grupo de Pesquisa de Tecnologias de Informação e Comunicação na Amazônia
             </p>
 
             <motion.button 

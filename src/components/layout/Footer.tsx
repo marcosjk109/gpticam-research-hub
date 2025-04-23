@@ -15,7 +15,7 @@ const Footer = () => {
               <h3 className="text-xl font-bold">GPTICAM</h3>
             </div>
             <p className="text-blue-200">
-              Grupo de Pesquisa em Tecnologia da Informação e Comunicação Aplicada à Multimídia
+              Grupo de Pesquisa de Tecnologias de Informação e Comunicação na Amazônia
             </p>
           </div>
           

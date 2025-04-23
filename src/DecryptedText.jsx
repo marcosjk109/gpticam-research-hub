@@ -15,7 +15,9 @@ import { motion } from 'framer-motion'
  * - className?: string          (applied to revealed/normal letters)
  * - encryptedClassName?: string (applied to encrypted letters)
  * - parentClassName?: string    (applied to the top-level span container)
- * - animateOn?: "view" | "hover"  (default: "hover")
+ * - animateOn?: "view" | "hover" | "load"  (default: "hover")
+ * - delay?: number              (delay before starting animation, in ms)
+ * - iterations?: number         (number of iterations to cycle through)
  */
 export default function DecryptedText({
   text,
@@ -29,6 +31,8 @@ export default function DecryptedText({
   parentClassName = '',
   encryptedClassName = '',
   animateOn = 'hover',
+  delay = 0,
+  iterations = undefined, // Use maxIterations if undefined
   ...props
 }) {
   const [displayText, setDisplayText] = useState(text)
@@ -37,6 +41,9 @@ export default function DecryptedText({
   const [revealedIndices, setRevealedIndices] = useState(new Set())
   const [hasAnimated, setHasAnimated] = useState(false)
   const containerRef = useRef(null)
+  
+  // Use iterations if provided, otherwise use maxIterations
+  const iterationsToUse = iterations !== undefined ? iterations : maxIterations
 
   useEffect(() => {
     let interval
@@ -131,7 +138,7 @@ export default function DecryptedText({
           } else {
             setDisplayText(shuffleText(text, prevRevealed))
             currentIteration++
-            if (currentIteration >= maxIterations) {
+            if (currentIteration >= iterationsToUse) {
               clearInterval(interval)
               setIsScrambling(false)
               setDisplayText(text)
@@ -153,12 +160,25 @@ export default function DecryptedText({
     isHovering,
     text,
     speed,
-    maxIterations,
+    iterationsToUse,
     sequential,
     revealDirection,
     characters,
     useOriginalCharsOnly,
   ])
+
+  // Efeito que roda uma vez no carregamento da página
+  useEffect(() => {
+    // Animate on load
+    if (animateOn === 'load' && !hasAnimated) {
+      const timer = setTimeout(() => {
+        setIsHovering(true);
+        setHasAnimated(true);
+      }, delay);
+      
+      return () => clearTimeout(timer);
+    }
+  }, [animateOn, hasAnimated, delay]);
 
   useEffect(() => {
     if (animateOn !== 'view') return
