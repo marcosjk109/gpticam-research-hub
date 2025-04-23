@@ -198,12 +198,7 @@ const Index = () => {
                     ${currentRobot === 1 ? 'opacity-100 z-10' : 'opacity-0 z-0'} 
                     ${isTransitioning && currentRobot === 2 ? 'robot-transition-out' : ''}
                     ${!isTransitioning && currentRobot === 1 ? 'robot-transition-in' : ''}
-                    ${robotHover ? 'filter-none' : 'filter brightness-90'}`}
-                  style={{
-                    animation: 'floatingRobot 4s ease-in-out infinite',
-                    transformStyle: 'preserve-3d',
-                    rotateY: mouseX
-                  }}
+                  `}
                 />
                 
                 {/* Robot 2 */}
@@ -211,121 +206,66 @@ const Index = () => {
                   src="/img/robot 2.png" 
                   alt="GPTICAM Robot 2" 
                   className={`w-auto h-full object-contain transition-all duration-700 absolute inset-0 
-                    ${currentRobot === 2 ? 'opacity-100 z-10' : 'opacity-0 z-0'} 
+                    ${currentRobot === 2 ? 'opacity-100 z-10' : 'opacity-0 z-0'}
                     ${isTransitioning && currentRobot === 1 ? 'robot-transition-out' : ''}
                     ${!isTransitioning && currentRobot === 2 ? 'robot-transition-in' : ''}
-                    ${robotHover ? 'filter-none' : 'filter brightness-90'}`}
-                  style={{
-                    animation: 'floatingRobot 4s ease-in-out infinite',
-                    transformStyle: 'preserve-3d',
-                    rotateY: mouseX
-                  }}
+                  `}
                 />
-                
-                {/* Botões para alternar manualmente */}
-                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
-                  <button 
-                    onClick={() => !isTransitioning && currentRobot !== 1 && switchRobot()}
-                    className={`w-3 h-3 rounded-full transition-all duration-300 ${currentRobot === 1 ? 'bg-[#FDD744]' : 'bg-white/30'}`}
-                    aria-label="Ver Robot 1"
-                  />
-                  <button 
-                    onClick={() => !isTransitioning && currentRobot !== 2 && switchRobot()}
-                    className={`w-3 h-3 rounded-full transition-all duration-300 ${currentRobot === 2 ? 'bg-[#FDD744]' : 'bg-white/30'}`}
-                    aria-label="Ver Robot 2"
-                  />
-                </div>
-                
-                {/* Efeitos de partículas quando hover */}
-                <div className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${robotHover ? 'opacity-100' : 'opacity-0'}`}>
-                  <div className="absolute top-1/4 right-1/4 w-4 h-4 bg-[#FDD744]/40 rounded-full animate-float-1"></div>
-                  <div className="absolute bottom-1/3 left-1/3 w-3 h-3 bg-[#FDD744]/40 rounded-full animate-float-2"></div>
-                  <div className="absolute top-1/3 left-1/4 w-2 h-2 bg-[#FDD744]/40 rounded-full animate-float-3"></div>
-                </div>
               </div>
               
-              {/* Efeito de brilho ao redor do robô */}
-              <div className={`absolute -inset-4 bg-gradient-to-br from-[#FDD744]/10 to-transparent rounded-full blur-xl transition-opacity duration-500 ${robotHover ? 'opacity-100' : 'opacity-0'}`}></div>
+              {/* Hexágonos flutuantes */}
+              <div className="absolute -top-10 -right-10 w-20 h-20 bg-[#376A63]/30 rounded-xl rotate-45 animate-float opacity-60"></div>
+              <div className="absolute -bottom-5 -left-5 w-10 h-10 bg-[#FDD744]/20 rounded-xl rotate-12 animate-float opacity-60" style={{ animationDelay: '1s' }}></div>
             </div>
-            
-            {/* Linhas de código decorativas */}
-            <motion.div 
-              style={{ y: heroElementY }}
-              className="absolute bottom-8 left-8 text-[#FDD744]/30 text-xs font-mono"
-            >
-              <div>01 &lt;robot&gt;</div>
-              <div>02 &nbsp;&nbsp;class="intelligent"</div>
-              <div>03 &nbsp;&nbsp;data-tech="ai"</div>
-              <div>04 &lt;/robot&gt;</div>
-            </motion.div>
           </motion.div>
           
-          {/* Conteúdo lado direito */}
+          {/* Lado direito com título e descrição */}
           <motion.div 
             style={{ 
               opacity: titleOpacity,
               x: titleX,
               y: mouseY
-            }}
-            className="w-full md:w-1/2 flex flex-col justify-center items-center px-8 md:px-16 py-16 text-white backdrop-blur-sm bg-[#376A63]/40"
+            }} 
+            className="w-full md:w-1/2 flex flex-col justify-center items-center md:items-start p-8 space-y-6"
           >
-            <div className="max-w-xl space-y-6">
-              <motion.h1 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-6xl md:text-7xl font-light leading-tight"
-              >
-                <DecryptedText 
-                  text="Nós amamos"
-                  className="text-white opacity-90"
-                  encryptedClassName="text-[#FDD744]/60"
-                  speed={80}
-                  maxIterations={15}
-                  sequential={true}
-                  animateOn="view"
-                />
-                <span className="text-[#FDD744] font-bold block animate-highlight">
-                  <DecryptedText 
-                    text="tecnologia & inovação"
-                    className="text-[#FDD744]"
-                    encryptedClassName="text-white/60"
-                    speed={80}
-                    sequential={true}
-                    animateOn="view"
-                  />
-                </span>
-              </motion.h1>
-              
-              <motion.p 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                className="text-xl text-[#7DCB80]"
-              >
-                <DecryptedText 
-                  text="GPTICAM - Grupo de Pesquisa em Tecnologia da Informação e Comunicação da Amazônia"
-                  className="text-[#7DCB80]"
-                  encryptedClassName="text-[#7DCB80]/60"
-                  speed={60}
-                  sequential={true}
-                  animateOn="view"
-                />
-              </motion.p>
-              
-              <motion.button 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => setShowAbout(!showAbout)}
-                className="mt-8 flex items-center gap-2 border border-[#FDD744] text-[#FDD744] px-8 py-3 rounded-full hover:bg-[#FDD744]/10 transition-all duration-300 group"
-              >
-                Sobre Nós
-                <ChevronDown className={`h-5 w-5 transition-transform duration-300 group-hover:translate-y-1 ${showAbout ? 'rotate-180' : ''}`} />
-              </motion.button>
-            </div>
+            {/* Logo GPTICAM */}
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="mb-4"
+            >
+              <img 
+                src="/img/logo gpticam.png" 
+                alt="GPTICAM Logo" 
+                className="h-20 w-auto mb-2" 
+              />
+            </motion.div>
+            
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#FDD744] to-[#FFEB80]">
+              <DecryptedText 
+                text="GPTICAM Research Hub" 
+                delay={100}
+                iterations={3}
+              />
+            </h1>
+            
+            <p className="text-[#7DCB80] text-lg md:text-xl text-center md:text-left max-w-lg">
+              Grupo de Pesquisa em Tecnologia da Informação e Comunicação Aplicada à Multimídia
+            </p>
+
+            <motion.button 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setShowAbout(!showAbout)}
+              className="mt-8 flex items-center gap-2 border border-[#FDD744] text-[#FDD744] px-8 py-3 rounded-full hover:bg-[#FDD744]/10 transition-all duration-300 group"
+            >
+              Sobre Nós
+              <ChevronDown className={`h-5 w-5 transition-transform duration-300 group-hover:translate-y-1 ${showAbout ? 'rotate-180' : ''}`} />
+            </motion.button>
           </motion.div>
           
           {/* Elemento decorativo como no design de referência */}
