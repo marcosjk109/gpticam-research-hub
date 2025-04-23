@@ -10,9 +10,9 @@ interface LayoutProps {
 
 const Layout = ({ children, className = "", isDiego = false }: LayoutProps) => {
   return (
-    <div className={`min-h-screen flex flex-col transition-colors ${isDiego ? 'bg-[#03041C] text-white dark:bg-diego-style dark:text-diego-style diego-cursor' : ''} ${className}`}>
+    <div className={`min-h-screen flex flex-col ${isDiego ? 'bg-[#03041C] text-white dark:bg-diego-style dark:text-diego-style diego-cursor' : ''} ${className}`} style={{ overflow: 'hidden' }}>
       <Header />
-      <main className={`flex-grow container mx-auto px-4 py-8 animate-fade-in ${isDiego ? 'diego-bg-pattern' : ''}`}>
+      <main className={`flex-grow container mx-auto px-4 py-8 ${isDiego ? 'diego-bg-pattern' : ''}`}>
         {children}
       </main>
       <Footer />
