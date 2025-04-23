@@ -115,7 +115,7 @@ const ResearcherProfile = () => {
         <div className="absolute top-1/4 right-1/4 w-24 h-24 bg-[#FF6932] rounded-full flex items-center justify-center cursor-pointer opacity-90 hover:opacity-100 hover:scale-105 transition-all duration-300 z-10 group">
           <PlayCircle className="h-12 w-12 text-white group-hover:scale-110 transition-transform duration-300" />
         </div>
-        
+
         <div className="absolute top-10 right-10 w-24 h-24 bg-[#FF6932] rounded-full flex items-center justify-center z-10 opacity-80">
           <Monitor className="h-14 w-14 text-white" />
         </div>
@@ -134,9 +134,9 @@ const ResearcherProfile = () => {
 
             <div className="space-y-4">
               <p className="text-lg font-light leading-relaxed text-white/80">
-                {researcher.bio}
-              </p>
-              
+              {researcher.bio}
+            </p>
+
               <div className="flex flex-wrap gap-3 md:gap-4 mt-4">
                 <div className="flex items-center text-white/70">
                   <Mail className="h-4 w-4 mr-2 text-[#C9FF76]" />
@@ -171,8 +171,8 @@ const ResearcherProfile = () => {
                   alt={researcher.name} 
                   className="object-cover w-full h-full transition-transform duration-700 scale-105 group-hover:scale-110" 
                 />
-                <AvatarFallback className="text-4xl">{initials}</AvatarFallback>
-              </Avatar>
+              <AvatarFallback className="text-4xl">{initials}</AvatarFallback>
+            </Avatar>
             </div>
           </div>
         </div>
@@ -208,7 +208,7 @@ const ResearcherProfile = () => {
                     <div className="bg-[#C9FF76]/20 rounded-full p-2">
                       <Award className="h-5 w-5 text-[#C9FF76]" />
                     </div>
-                    <div>
+                <div>
                       <div className="text-sm font-bold">{researcher.awards[0].title}</div>
                       <div className="text-xs text-[#BACD8E]">{researcher.awards[0].organization}</div>
                     </div>
@@ -268,7 +268,7 @@ const ResearcherProfile = () => {
         
         <div className="max-w-4xl mx-auto flex flex-wrap justify-center gap-10 mb-8">
           {researcher.technologies.map((tech, index) => {
-            const IconComponent = iconMap[tech.icon];
+                  const IconComponent = iconMap[tech.icon];
             const iconColors = [
               { bg: "bg-red-600", text: "text-white", trailColor: "#432722", progressColor: "#C41E3A" },
               { bg: "bg-white", text: "text-[#1A2A12]", trailColor: "#22432B", progressColor: "#FFFFFF" },
@@ -278,7 +278,7 @@ const ResearcherProfile = () => {
             const color = iconColors[index % iconColors.length];
             const percentage = parseInt(tech.proficiency);
             
-            return (
+                  return (
               <div key={tech.name} className="flex flex-col items-center">
                 <div className="relative w-36 h-36 mb-4">
                   {/* Círculo base (trail) */}
@@ -325,7 +325,7 @@ const ResearcherProfile = () => {
                       fill="white" 
                       textAnchor="middle"
                     >
-                      {tech.proficiency}
+                        {tech.proficiency}
                     </text>
                   </svg>
                   
@@ -335,10 +335,10 @@ const ResearcherProfile = () => {
                   </div>
                 </div>
                 <span className="text-white font-medium text-center">{tech.name}</span>
+                    </div>
+                  );
+                })}
               </div>
-            );
-          })}
-        </div>
       </div>
 
       {/* Seção de Publicações (estilo Awards & recognitions) */}
@@ -358,12 +358,12 @@ const ResearcherProfile = () => {
           </div>
           
           <div className="space-y-6">
-            {researcher.publications.map((pub, index) => (
+                {researcher.publications.map((pub, index) => (
               <div key={index} className="border-b border-[#C9FF76]/10 pb-6 last:border-b-0 group">
                 <div className="flex justify-between items-start">
                   <div>
                     <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-[#C9FF76] transition-colors duration-300">
-                      {pub.title}
+                          {pub.title}
                     </h3>
                     <p className="text-sm text-[#BACD8E] uppercase tracking-wide mt-1">
                       {pub.journal} {pub.year}
