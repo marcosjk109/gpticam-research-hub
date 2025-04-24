@@ -145,6 +145,90 @@
   .perspective {
     perspective: 1000px;
   }
+
+  /* Classes responsivas */
+  .responsive-container {
+    @apply w-full px-4 mx-auto;
+    max-width: 100%;
+  }
+
+  @media (min-width: 640px) {
+    .responsive-container {
+      max-width: 540px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .responsive-container {
+      max-width: 720px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .responsive-container {
+      max-width: 960px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .responsive-container {
+      max-width: 1140px;
+    }
+  }
+
+  @media (min-width: 1536px) {
+    .responsive-container {
+      max-width: 1320px;
+    }
+  }
+
+  /* Classes para grid responsivo */
+  .responsive-grid {
+    @apply grid grid-cols-1 gap-4;
+  }
+
+  @media (min-width: 640px) {
+    .responsive-grid {
+      @apply grid-cols-2;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .responsive-grid {
+      @apply grid-cols-3;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .responsive-grid {
+      @apply grid-cols-4;
+    }
+  }
+
+  /* Classes para texto responsivo */
+  .responsive-text-xs {
+    @apply text-xs sm:text-sm;
+  }
+
+  .responsive-text-sm {
+    @apply text-sm sm:text-base;
+  }
+
+  .responsive-text-base {
+    @apply text-base sm:text-lg md:text-xl;
+  }
+
+  .responsive-text-lg {
+    @apply text-lg sm:text-xl md:text-2xl;
+  }
+
+  .responsive-text-xl {
+    @apply text-xl sm:text-2xl md:text-3xl;
+  }
+
+  .responsive-text-2xl {
+    @apply text-2xl sm:text-3xl md:text-4xl;
+  }
 }
 
 @keyframes fadeIn {

@@ -18,6 +18,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
+  SheetDescription,
 } from "@/components/ui/sheet";
 
 import { Button } from "@/components/ui/button";
@@ -68,8 +69,9 @@ export default function Header() {
               <NavigationMenuList>
                 {menuItems.map((item) => (
                   <NavigationMenuItem key={item.title}>
-                    <Link to={item.href}>
-                      <NavigationMenuLink
+                    <NavigationMenuLink asChild>
+                      <Link 
+                        to={item.href}
                         className={cn(
                           navigationMenuTriggerStyle(),
                           "bg-transparent text-white hover:bg-white/10 hover:text-white",
@@ -77,8 +79,8 @@ export default function Header() {
                         )}
                       >
                         {item.title}
-                      </NavigationMenuLink>
-                    </Link>
+                      </Link>
+                    </NavigationMenuLink>
                   </NavigationMenuItem>
                 ))}
               </NavigationMenuList>
@@ -118,6 +120,9 @@ export default function Header() {
                     />
                     GPTICAM
                   </SheetTitle>
+                  <SheetDescription>
+                    Menu de navegação do GPTICAM Research Hub
+                  </SheetDescription>
                 </SheetHeader>
                 <div className="flex flex-col space-y-4 py-4">
                   {/* Opções de navegação */}
